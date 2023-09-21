@@ -1,5 +1,8 @@
-
-import { onClickForClear, onClickForDelete } from "../components/buttons";
+import {
+  onClickForClear,
+  onClickForDelete,
+  onHook,
+} from "../components/buttons";
 import { listCompletedTask, listTask } from "../variables";
 
 function data() {
@@ -33,16 +36,28 @@ function renderTodos() {
   data().forEach((item, index) => {
     const li = document.createElement("li");
     li.setAttribute("data-index", index);
+    li.classList.add("list__item");
 
-    const title = document.createElement("span");
-    title.innerHTML = "<strong>Titulo: </strong> " + item.title;
+    const itemHtml = `
+      <input name="checkedTask" type="checkbox" class="form-check-input" />
+      <span>
+        <strong>Titulo:</strong> ${item.title} </br>
+        <strong>Descrição:</strong> ${item.description}
+      </span>
+      <span> 
+        <button class="btn btn-sm btn-info">Editar</button>
+        <button class="btn btn-sm btn-danger btn-del">Deletar</button>
+      </span>
+    `;
 
-    const buttonDel = document.createElement("button");
-    buttonDel.classList.add("btn", "btn-danger", "btn-del");
-    buttonDel.innerHTML = "Deletar";
-    
-    li.append(title);
-    li.append(buttonDel);
+    // const buttonDel = document.createElement("button");
+    // buttonDel.classList.add("btn", "btn", "btn-del");
+    // buttonDel.innerHTML = "Deletar";
+
+    // li.append(title);
+    // li.append(buttonDel);
+
+    li.innerHTML = itemHtml;
 
     if (item.checked == true) {
       listCompletedTask.append(li);
@@ -52,7 +67,14 @@ function renderTodos() {
   });
 
   onClickForClear();
-  onClickForDelete();
+  // onClickForDelete();
+
+  onHook(".btn-del", "click", (ev) => {
+    const li = ev.target.closest("li");
+    const index = li.dataset.index;
+    dataDelete(index);
+    renderTodos();
+  });
 }
 
 function dataDelete(index) {
@@ -61,5 +83,7 @@ function dataDelete(index) {
 
   localStorage.setItem("list", JSON.stringify(prevdata));
 }
+
+const dataEdit = (index, args) => {};
 
 export { data, dataPush, dataClean, dataDelete, renderTodos };

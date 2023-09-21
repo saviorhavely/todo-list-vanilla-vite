@@ -1,0 +1,19 @@
+html {}
+body {}
+
+
+/* Lists */
+.list {
+    list-style: none;
+    padding-left: 0;
+}
+.list__item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    padding: 16px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 8px;
+} 

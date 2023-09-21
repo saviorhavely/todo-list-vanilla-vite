@@ -8,8 +8,8 @@ function onSubmitAddTask() {
     
     dataPush({
       title: form.querySelector("[name=title]").value,
-      amount: form.querySelector("[name=amount]").value,
-      checked: form.querySelector("[name=checked]").checked,
+      description: form.querySelector("[name=description]").value,
+      checked: false,
     })
     
     renderTodos();

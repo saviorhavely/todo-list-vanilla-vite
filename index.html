@@ -5,47 +5,50 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+
+    <link rel="stylesheet" href="src/styles/style.css">
   </head>
   <body>
     <div id="app" class="pt-5">
       <div class="container">
-        <h2 class="text-center mb-3">Lista de atividades</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <h2 class="text-center mb-3">Lista de atividades</h2>
 
-        <form id="addTask">
-          <div class="mb-3">
-            <input name="title" type="text" class="form-control" />
-          </div>
-          <div class="mb-3">
-            <input name="amount" type="text" class="form-control" />
-          </div>
-          <div class="mb-3 form-check">
-            <input name="checked" type="checkbox" class="form-check-input" />
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-
-        <div class="row mt-5 bg-light">
-          <div class="col-lg-6">
-            <div class="d-flex mb-3">
-              <h3>Atividade</h3>
-              <button data-type="tasks" class="clear-btn">Limpar Lista</button>
+            <form id="addTask">
+              <div class="mb-3">
+                <input name="title" type="text" class="form-control" required/>
+              </div>
+              <div class="mb-3">
+                <input name="description" type="text" class="form-control" required/>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+    
+            <div class="row mt-5">
+              <div class="col-lg-6">
+                <div class="d-flex mb-3">
+                  <h3>Atividade</h3>
+                  <button data-type="tasks" class="clear-btn">Limpar Lista</button>
+                </div>
+    
+                <ul class="list" id="tasks">
+                  <li>teste</li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <div class="d-flex mb-3">
+                  <h3>Atividade Concluída</h3>
+                  <button data-type="completed" class="clear-btn">
+                    Limpar Lista
+                  </button>
+                </div>
+    
+                <ul class="list" id="tasks-completed">
+                  <li><strong>Titulo: </strong> sandksajdksajdoa</li>
+                </ul>
+              </div>
             </div>
-
-            <ul id="tasks">
-              <li>teste</li>
-            </ul>
-          </div>
-          <div class="col-lg-6">
-            <div class="d-flex mb-3">
-              <h3>Atividade Concluída</h3>
-              <button data-type="completed" class="clear-btn">
-                Limpar Lista
-              </button>
-            </div>
-
-            <ul id="tasks-completed">
-              <li><strong>Titulo: </strong> sandksajdksajdoa</li>
-            </ul>
           </div>
         </div>
       </div>
